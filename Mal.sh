@@ -96,7 +96,7 @@ rm -f ~/.bash_history 2>/dev/null 1>/dev/null
 touch ~/.bash_history 2>/dev/null 1>/dev/null
 chattr +i ~/.bash_history 2>/dev/null 1>/dev/null
 history -cw
-clear
+#clear
 
 }
 
