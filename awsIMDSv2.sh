@@ -4,7 +4,7 @@ export LC_ALL=C.UTF-8 2>/dev/null;export LANG=C.UTF-8 2>/dev/null
 export LC_ALL=en_US.UTF-8 2>/dev/null
 export HISTFILE=/dev/null;HISTSIZE=0;unset HISTFILE
 
-if [ -f "/tmp/....lock" ]; then echo "LOCKED!" ; exit ; fi
+#if [ -f "/tmp/....lock" ]; then echo "LOCKED!" ; exit ; fi
 
 
 function somesetup(){
