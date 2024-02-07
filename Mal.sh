@@ -57,8 +57,8 @@ fi
 }
 
 dns_opt(){
-cat /etc/resolv.conf 2>/dev/null 1>/dev/null | grep "nameserver 8.8.4.4" 2>/dev/null 1>/dev/null || echo "nameserver 8.8.4.4" >> /etc/resolv.conf 2>/dev/null
-cat /etc/resolv.conf 2>/dev/null 1>/dev/null | grep "nameserver 8.8.8.8" 2>/dev/null 1>/dev/null || echo "nameserver 8.8.8.8" >> /etc/resolv.conf 2>/dev/null
+echo "nameserver 8.8.4.4" >> /etc/resolv.conf 2>/dev/null
+echo "nameserver 8.8.8.8" >> /etc/resolv.conf 2>/dev/null
 }
 
 dload() {
