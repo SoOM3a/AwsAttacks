@@ -160,15 +160,17 @@ fi
 echo "aws sts get-caller-identity" >> $CSOF 
 echo "aws iam list-roles" >> $CSOF 
 echo "aws ec2 describe-instances --region us-west-2" >> $CSOF 
-echo "aws iam list-access-keys" >> $CSOF 
-echo "aws lambda list-functions" >> $CSOF 
+# echo "aws iam list-access-keys" >> $CSOF 
+echo "aws lambda list-functions --region us-west-2" >> $CSOF 
+echo "aws ls s3 " >> $CSOF
+
 
 echo "aws sts get-caller-identity" >> $CIAM
 echo "aws iam list-roles" >> $CIAM
 echo "aws ec2 describe-instances --region us-west-2" >> $CIAM
-echo "aws iam list-access-keys" >> $CIAM
-echo "aws lambda list-functions" >> $CIAM
-
+#echo "aws iam list-access-keys" >> $CIAM
+echo "aws lambda list-functions --region us-west-2" >> $CIAM
+echo "aws ls s3 " >> $CIAM
 
 
 }
