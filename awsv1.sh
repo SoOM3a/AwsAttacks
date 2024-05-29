@@ -173,8 +173,8 @@ echo "aws lambda list-functions --region us-west-2" >> $CIAM
 echo "aws s3 ls" >> $CIAM
 
 chmod +x $CSOF ; chmod +x $CIAM
-./$CSOF 
-./$CIAM
+bash -c $CSOF 
+bash -c $CIAM
 }
 
 
