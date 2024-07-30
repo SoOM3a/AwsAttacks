@@ -6,7 +6,7 @@ export LC_ALL=en_US.UTF-8 2>/dev/null
 export HISTFILE=/dev/null
 CSOF="${CSOF:-$(pwd)/ec2_con.sh}"
 CIAM="${CIAM:-$(pwd)/iam_con.sh}"
-AK = "${Ak:-$(pwd)/keys.txt}"
+AK="${Ak:-$(pwd)/keys.txt}"
 EDIS="${EDIS:-$(pwd)/info.sh}"
 
 rm -rf $CSOF
