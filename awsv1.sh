@@ -175,7 +175,8 @@ echo "aws ec2 describe-instances --region us-west-2" >> $CIAM
 echo "aws iam list-access-keys" >> $CIAM
 echo "aws lambda list-functions --region us-west-2" >> $CIAM
 echo "aws s3 ls" >> $CIAM
-echo "awsBName='test-virus-$((RANDOM % 100))'" >> $CIAM
+echo "awsBName='test-virus-'$((RANDOM % 100))" >> $CIAM
+echo "echo 'Backer Name is:' $awsBName"
 echo "aws s3 mb s3://$awsBName" >> $CIAM
 echo "wget 'https://secure.eicar.org/eicar.com' -O eicar" >> $CIAM
 echo "aws s3 mv eicar s3://$awsBName" >> $CIAM
