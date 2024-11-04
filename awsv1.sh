@@ -179,13 +179,16 @@ awsBName=test-virus-$((RANDOM % 100))
 echo "awsBName=$awsBName" >> $CIAM
 echo "echo 'Backet Name is:' $awsBName"
 echo "aws s3 mb s3://$awsBName" >> $CIAM
-echo "rm -rf eicar*" >> $CIAM
-echo "wget 'https://secure.eicar.org/eicar.com' -O eicar" >> $CIAM
-echo "aws s3 mv eicar s3://$awsBName" >> $CIAM
-echo "aws s3 cp s3://$awsBName/eicar eicar-download" >> $CIAM 
-echo "echo 'You need to delete S3 manually:' $awsBName" >> $CIAM
+echo "rm -rf virus*" >> $CIAM
+echo "wget 'https://secure.eicar.org/eicar.com' -O virus_eicar" >> $CIAM
+echo "wget 'https://github.com/doktor83/SRBMiner-Multi/releases/download/2.6.9/SRBMiner-Multi-2-6-9-win64.zip' -O virus_miner_SRB" >> $CIAM
+echo "aws s3 mv virus_eicar s3://$awsBName" >> $CIAM
+echo "aws s3 mv virus_miner_SRB s3://$awsBName" >> $CIAM
 
-
+echo "aws s3 cp s3://$awsBName/virus_eicar virus-eicar-download" >> $CIAM 
+echo "aws s3 cp s3://$awsBName/virus_miner_SRB virus-virus_miner_SRB" >> $CIAM 
+echo "aws s3 rm s3://$awsBName --recursive" >> $CIAM 
+echo "aws s3api delete-bucket --bucket $awsBName" >> $CIAM 
 
 chmod +x $CSOF ; chmod +x $CIAM
 bash -c $CSOF 
