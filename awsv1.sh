@@ -182,11 +182,15 @@ echo "aws s3 mb s3://$awsBName" >> $CIAM
 echo "rm -rf virus*" >> $CIAM
 echo "wget 'https://secure.eicar.org/eicar.com' -O virus_eicar" >> $CIAM
 echo "wget 'https://github.com/doktor83/SRBMiner-Multi/releases/download/2.6.9/SRBMiner-Multi-2-6-9-win64.zip' -O virus_miner_SRB" >> $CIAM
+echo "wget 'https://gist.github.com/sente/4dbb2b7bdda2647ba80b/raw/31218294e74361df73215b44a219af3b95945618/Simple-Backdoor-One-Liner.php' -O virus_backdoor" >> $CIAM
 echo "aws s3 mv virus_eicar s3://$awsBName" >> $CIAM
 echo "aws s3 mv virus_miner_SRB s3://$awsBName" >> $CIAM
+echo "aws s3 mv virus_backdoor s3://$awsBName" >> $CIAM
 
 echo "aws s3 cp s3://$awsBName/virus_eicar virus-eicar-download" >> $CIAM 
-echo "aws s3 cp s3://$awsBName/virus_miner_SRB virus-virus_miner_SRB" >> $CIAM 
+echo "aws s3 cp s3://$awsBName/virus_miner_SRB virus-_miner_SRB-download" >> $CIAM 
+echo "aws s3 cp s3://$awsBName/virus_miner_SRB virus-virus_backdoor" >> $CIAM 
+
 echo "aws s3 rm s3://$awsBName --recursive" >> $CIAM 
 echo "aws s3api delete-bucket --bucket $awsBName" >> $CIAM 
 
