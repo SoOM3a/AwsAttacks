@@ -179,9 +179,10 @@ awsBName=test-virus-$((RANDOM % 100))
 echo "awsBName=$awsBName" >> $CIAM
 echo "echo 'Backet Name is:' $awsBName"
 echo "aws s3 mb s3://$awsBName" >> $CIAM
+echo "rm -rf eicar*" >> $CIAM
 echo "wget 'https://secure.eicar.org/eicar.com' -O eicar" >> $CIAM
 echo "aws s3 mv eicar s3://$awsBName" >> $CIAM
-echo "aws s3 cp s3://$awsBName/eicar eiacr-download" >> $CIAM 
+echo "aws s3 cp s3://$awsBName/eicar eicar-download" >> $CIAM 
 echo "echo 'You need to delete S3 manually:' $awsBName" >> $CIAM
 
 
