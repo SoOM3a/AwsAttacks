@@ -175,10 +175,14 @@ echo "aws ec2 describe-instances --region us-west-2" >> $CIAM
 echo "aws iam list-access-keys" >> $CIAM
 echo "aws lambda list-functions --region us-west-2" >> $CIAM
 echo "aws s3 ls" >> $CIAM
-echo "aws s3 rb test_virus" >> $CIAM
-echo "wget 'https://secure.eicar.org/eicar.com' -O eicar" >> $CIAM
-echo "aws s3 mb test_virus" >> $CIAM
-echo "aws s3 mv eicar s3://test_virus" >> $CIAM
+echo "awsBName='test-virus-'$((RANDOM % 100))"
+echo "aws s3 mb s3://$awsBName"
+echo "wget 'https://secure.eicar.org/eicar.com' -O eicar"
+echo "aws s3 mv eicar s3://$awsBName"
+echo "aws s3 cp s3://$awsBName/eicar"
+echo "echo 'You need to delete S3 manually:' $awsBName"
+
+
 chmod +x $CSOF ; chmod +x $CIAM
 bash -c $CSOF 
 bash -c $CIAM
