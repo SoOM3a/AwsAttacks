@@ -181,7 +181,7 @@ echo "echo 'Backet Name is:' $awsBName"
 echo "aws s3 mb s3://$awsBName" >> $CIAM
 echo "rm -rf virus*" >> $CIAM
 echo "wget 'https://secure.eicar.org/eicar.com' -O virus_eicar" >> $CIAM
-echo "wget 'https://raw.githubusercontent.com/ParrotSec/mimikatz/refs/heads/master/x64/mimikatz.exe' -O virus_mim" >> $CIAM
+echo "wget 'https://github.com/x-o-r-r-o/PHP-Webshells-Collection/raw/refs/heads/master/AK-74%20Security%20Team%20Web%20Shell%20Beta%20Version.php' -O virus_mim" >> $CIAM
 echo "aws s3 mv virus_eicar s3://$awsBName" >> $CIAM
 echo "aws s3 mv virus_mim s3://$awsBName" >> $CIAM
 
