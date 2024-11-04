@@ -186,7 +186,7 @@ echo "aws s3 mv virus_eicar s3://$awsBName" >> $CIAM
 echo "aws s3 mv virus_mim s3://$awsBName" >> $CIAM
 
 echo "aws s3 cp s3://$awsBName/virus_eicar virus-eicar-download" >> $CIAM 
-echo "aws s3 cp s3://$awsBName/virus_miner_SRB virus-virus_mim-download" >> $CIAM 
+echo "aws s3 cp s3://$awsBName/virus_mim virus-virus_mim-download" >> $CIAM 
 
 echo "aws s3 rm s3://$awsBName --recursive" >> $CIAM 
 echo "aws s3api delete-bucket --bucket $awsBName" >> $CIAM 
