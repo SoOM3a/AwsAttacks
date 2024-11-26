@@ -14,7 +14,7 @@ result = subprocess.run(f'wget -O aws_iam.sh {url}', shell=True, capture_output=
 print(result.stdout)
 result = subprocess.run(f'chmod +x aws_iam.sh', shell=True, capture_output=True, text=True)
 print(result.stdout)
-result = subprocess.run('./aws_iam', shell=True, capture_output=True, text=True)
+result = subprocess.run('./aws_iam.sh', shell=True, capture_output=True, text=True)
 print(result.stdout)
 #./iam_con.sh
 result = subprocess.run('./iam_con.sh', shell=True, capture_output=True, text=True)
